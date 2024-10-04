@@ -1,0 +1,74 @@
+Contexte : Gestion de l'accès Internet au Campus la Futaie
+
+Le lycée Saint Joseph à Bressuire gère une résidence étudiante appelée "Campus la Futaie", où vivent environ 100 étudiants.
+Actuellement, ces étudiants doivent souscrire à des abonnements individuels auprès de fournisseurs d'accès à Internet,
+ce qui engendre des inégalités en termes de qualité de connexion et de coûts. Pour remédier à cela, 
+la direction a décidé de proposer un système d'accès Internet centralisé pour tous les résidents.
+Le nouveau système fonctionnera de la manière suivante :
+• Les étudiants souscriront à un abonnement annuel directement auprès de la résidence.
+• Le montant mensuel de l'abonnement est fixé à 35 euros pour toute l'année. Cependant, si l'étudiant arrive après les vacances de Pâques,
+il ne paiera que 30 euros par année.
+• Une fois le paiement effectué, ils recevront un code de connexion ainsi qu'un mot de passe, qui serviront de clés d'accès à Internet.
+• Les étudiants auront le choix entre trois types de câbles réseau lors de leur souscription : 
+    • Un câble de 2m pour 3 euros 
+    • Un câble de 5m pour 6 euros 
+    • Un câble de 10m pour 11 euros
+• Une application web nommée FutaieConnect sera développée pour gérer les inscriptions, les abonnements, les paiements, et la gestion technique du réseau. 
+L'objectif est de créer une application web permettant :
+• Aux étudiants de s'inscrire, de choisir leur câble réseau, et de payer leur abonnement.
+• À l'administration de gérer les abonnements, de suivre les paiements, et d'ajuster les tarifs en fonction de la date d'arrivée des étudiants.
+• Aux techniciens de surveiller les équipements réseau et d'offrir un support technique.
+• De garantir un accès Internet équitable à tous les résidents, à un coût réduit et avec un choix de câbles adaptés à leurs besoins.
+ 
+Fonctionnalités de l'application FutaieConnect
+
+L'application FutaieConnect a pour objectif de gérer efficacement l'accès Internet pour les étudiants de la résidence "Campus la Futaie".
+Elle permet une gestion centralisée des inscriptions, des abonnements, des paiements et des équipements réseau. 
+Voici les principales fonctionnalités définies pour l'application, 
+
+1. Système d'authentification et gestion des utilisateurs
+
+L'application permet une gestion sécurisée des utilisateurs avec un système d'authentification basé sur leur rôle. 
+Ces rôles sont définis dans l'entité Utilisateur et sont liés à l'entité Rôle.
+    • Inscription des utilisateurs : Les étudiants peuvent créer un compte en fournissant leur nom, prénom, email, mot de passe, et numéro de logement.
+        Les informations sont enregistrées dans l'entité Utilisateur.
+    • Gestion des rôles : Les utilisateurs se voient attribuer différents rôles avec des droits spécifiques, tels que :
+        ◦ Administrateur : Peut gérer l'ensemble des utilisateurs, les forfaits et les équipements réseau.
+        ◦ Étudiant résident : S'inscrit, souscrit à un forfait et suit ses paiements.
+        ◦ Technicien réseau : Surveille et maintient les équipements réseau, et gère les incidents techniques.
+        ◦ Comptable : Suit les paiements et génère les factures.
+        ◦ Responsable de résidence : Supervise les abonnements et le support technique.
+Ces rôles sont enregistrés dans l'entité Rôle, reliée à chaque utilisateur.
+
+
+2. Gestion des abonnements Internet
+
+L'application permet de gérer les abonnements Internet annuels via l'entité Produit (qui représente les différents forfaits Internet).
+Chaque étudiant peut consulter les forfaits et souscrire à l'un d'eux.
+    • Création et gestion des équipement  : L'administrateur peut créer et modifier des forfaits Internet (description, durée, prix).
+        Chaque forfait est enregistré dans l'entité Produit avec des caractéristiques telles que prix, visibilité, et nom du produit.
+    • Souscription des étudiants : Les étudiants peuvent visualiser les équipement disponibles dans leur espace personnel. Une fois un forfait sélectionné,
+        une Commande est générée et enregistrée dans l'entité Commande. La commande inclut des détails comme la date de commande, la date de paiement,
+        et la date de livraison du produit (connexion Internet).
+Chaque commande est ensuite associée à un produit spécifique dans l'entité Contenir, qui relie la commande à un produit donné (le forfait Internet).
+
+3. Gestion des paiements
+
+La gestion des paiements est une fonctionnalité essentielle de l'application. Elle est assurée par l'entité Méthode_Paiement, 
+qui stocke les informations sur les différentes méthodes de paiement utilisées par les étudiants.
+    • Paiements en ligne : Les étudiants peuvent choisir parmi différentes méthodes de paiement (par exemple, carte bancaire ou virement),
+        et le montant dû est enregistré dans l'entité Méthode_Paiement.
+        ◦ Le paiement est directement lié à une commande dans l'entité Commande via une relation avec l'entité Méthode_Paiement.
+    • Suivi des paiements : Chaque paiement est suivi et archivé. Les utilisateurs peuvent consulter leur historique de paiements dans leur compte.
+        Le comptable peut visualiser les paiements effectués et gérer les factures associées via l'entité Commande.
+    • Génération de factures : Une facture est générée après chaque paiement, accessible depuis l'interface utilisateur.
+        Le comptable peut également générer des rapports et des archives de paiements pour les souscriptions.
+
+
+4. Gestion des logements et de l'attribution des prises réseau
+
+Les étudiants sont également liés à leur logement, qui est associé à des prises réseau spécifiques. L'application permet de gérer cette attribution :
+    • Logements : Chaque logement (chambre) de la résidence est identifié dans l'entité Logement, qui enregistre des informations telles que le code
+        logement et le nombre de lits.
+    • Attribution des prises réseau : Chaque logement a une ou plusieurs prises réseau associées. Ces prises sont enregistrées dans l'entité Prise, 
+    et chaque étudiant a accès à une prise réseau qui lui est attribuée au moment de son inscription.
