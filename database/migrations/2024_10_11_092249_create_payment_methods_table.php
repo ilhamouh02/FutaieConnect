@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('FTC_password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('FTC_payment_methods', function (Blueprint $table) {
+            $table->string('id_Paiement', 50)->primary();
+            $table->string('payment_type', 50);
+            // Nous n'ajoutons pas timestamps() car ils ne sont pas dans votre schéma original
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('FTC_password_reset_tokens');
+        Schema::dropIfExists('FTC_payment_methods');
     }
 };
