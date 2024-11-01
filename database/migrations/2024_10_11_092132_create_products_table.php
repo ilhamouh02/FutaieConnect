@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('FTC_Products', function (Blueprint $table) {
+        Schema::create('Products', function (Blueprint $table) {
             $table->string('id_Produit', 100)->primary();
             $table->float('prix_Produit');
             $table->boolean('visible');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('FTC_Products');
+        Schema::dropIfExists('Products');
     }
 };

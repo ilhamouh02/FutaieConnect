@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('FTC_status', function (Blueprint $table) {
+        Schema::create('status', function (Blueprint $table) {
             $table->string('id_demande', 50)->primary();
             $table->boolean('demance_Valider');
             $table->boolean('demand_en_cours');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('FTC_status');
+        Schema::dropIfExists('status');
     }
 };

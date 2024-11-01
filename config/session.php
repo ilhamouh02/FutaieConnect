@@ -85,7 +85,8 @@ return [
     |
     */
 
-  'table' => 'FTC_sessions',
+    //'table' => env('DB_TABLE_PREFIX', 'FTC_') . 'sessions',
+    'table' => 'FTC_sessions',
 
     /*
     |--------------------------------------------------------------------------

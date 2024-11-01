@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('FTC_orders', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id('id_Commande');
             $table->date('date_Commande');
             $table->date('date_Paiement')->nullable();
@@ -24,10 +24,10 @@ return new class extends Migration
             $table->string('id_Prise', 50)->nullable();
 
             // Clés étrangères
-            $table->foreign('id_demande')->references('id_demande')->on('FTC_status');
-            $table->foreign('id_Paiement')->references('id_Paiement')->on('FTC_payment_methods');
-            $table->foreign('id_utilisateur')->references('id_utilisateur')->on('FTC_users');
-            $table->foreign('id_Prise')->references('id_Prise')->on('FTC_Prises');
+            //$table->foreign('id_demande')->references('id_demande')->on('FTC_status');
+            //$table->foreign('id_Paiement')->references('id_Paiement')->on('FTC_payment_methods');
+            //$table->foreign('id_utilisateur')->references('id_utilisateur')->on('FTC_users');
+            //$table->foreign('id_Prise')->references('id_Prise')->on('FTC_Prises');
         });
     }
 
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('FTC_orders');
+        Schema::dropIfExists('orders');
     }
 };

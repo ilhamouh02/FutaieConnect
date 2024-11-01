@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('FTC_Prises', function (Blueprint $table) {
+        Schema::create('Prises', function (Blueprint $table) {
             $table->string('id_Prise', 50)->primary();
             $table->string('id_Logement', 50);
             
             // Clé étrangère
             $table->foreign('id_Logement')
                   ->references('id_Logement')
-                  ->on('FTC_logements')
+                  ->on('logements')
                   ->onDelete('cascade');
             
             // Nous n'ajoutons pas timestamps() car ils ne sont pas dans votre schéma original
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('FTC_Prises');
+        Schema::dropIfExists('Prises');
     }
 };

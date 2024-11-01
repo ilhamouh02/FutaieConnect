@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('FTC_users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id('id_utilisateur');
             $table->string('nom', 50);
             $table->string('prenom', 50);
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('id_Logement', 50)->nullable();
 
             // Clés étrangères
-            $table->foreign('id_role')->references('id_role')->on('FTC_Roles')->onDelete('restrict');
-            $table->foreign('id_Logement')->references('id_Logement')->on('FTC_logements')->onDelete('set null');
+            //$table->foreign('id_role')->references('id_role')->on('FTC_Roles')->onDelete('restrict');
+            //$table->foreign('id_Logement')->references('id_Logement')->on('FTC_logements')->onDelete('set null');
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('FTC_users');
+        Schema::dropIfExists('users');
     }
 };

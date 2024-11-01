@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('FTC_Contenir', function (Blueprint $table) {
+        Schema::create('Contenir', function (Blueprint $table) {
             $table->string('id_Produit', 100);
             $table->unsignedInteger('id_Commande');
             $table->float('prix_Produit');
@@ -21,8 +21,8 @@ return new class extends Migration
             $table->primary(['id_Produit', 'id_Commande']);
 
             // Clés étrangères
-            $table->foreign('id_Produit')->references('id_Produit')->on('FTC_Products');
-            $table->foreign('id_Commande')->references('id_Commande')->on('FTC_orders');
+            //$table->foreign('id_Produit')->references('id_Produit')->on('FTC_Products');
+           // $table->foreign('id_Commande')->references('id_Commande')->on('FTC_orders');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('FTC_Contenir');
+        Schema::dropIfExists('Contenir');
     }
 };
